@@ -5,17 +5,25 @@ import { Header } from "../../components/Header";
 import { CardsList } from "../../components/CardsList";
 import { Person } from "../../components/CardsList/components/Card/Card.interface";
 import styles from "./Home.module.scss"
+import { toast } from "react-toastify";
 
 export const Home = () => {
   const [data, setData] = useState<Person[]>([])
   
   const handleLoadData = async (filter?: string) => {
-    let filteredData: Person[] = peopleData as Person[];
-    if(!!filter) {
-      filteredData = filteredData.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()))
+    try {
+      let filteredData: Person[] = peopleData as Person[];
+      if(!!filter) {
+        filteredData = filteredData.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()))
+      }
+      
+      setData(filteredData)
+    } catch (err) {
+      toast("Something went wrong while loading the CSV file", {
+        type: "error",
+        position: "bottom-right"
+      })
     }
-
-    setData(filteredData)
   }
 
   const filterData = useDebounce((value: string) => {

@@ -14,9 +14,13 @@ export const Header = ({ onFilterChange, onButtonClick }: HeaderProps) => {
   }
 
   const handleClick = () => {
+    if(hasLoaded) {
+      handleChange("")
+      return
+    }
+
     onButtonClick()
     setHasLoaded(true)
-    handleChange("")
   }
 
   const buttonText = hasLoaded ? "Reset" : "Load CSV"
