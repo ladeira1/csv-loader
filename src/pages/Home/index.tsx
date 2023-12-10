@@ -34,11 +34,7 @@ export const Home = () => {
     <div className={styles.container}>
       <Header onButtonClick={() => handleLoadData()} onFilterChange={filterData} />
       <article>
-        <CardsList.List>
-          {data.map((card, index) => (
-            <CardsList.Card key={index} {...card} />
-          ))}
-        </CardsList.List>
+        <CardsList className="scroll-container" items={data} />
       </article>
     </div>
   )
