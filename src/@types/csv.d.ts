@@ -1,1 +1,1 @@
-declare module "cdv" {}
+declare module "*.csv" {}
