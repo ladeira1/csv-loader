@@ -2,16 +2,11 @@ import { useState } from "react"
 import peopleData from "../../data/people.csv"
 import { useDebounce } from "../../utils/useDebounce";
 import { Header } from "../../components/Header";
-
-interface Person {
-  name: string;
-  city: string;
-  country: string;
-  favorite_sport: string;
-}
+import { CardsList } from "../../components/CardsList";
+import { Person } from "../../components/CardsList/components/Card/Card.interface";
 
 export const Home = () => {
-  const [data, setData] = useState<Person[]>()
+  const [data, setData] = useState<Person[]>([])
   
   const handleLoadData = async (filter?: string) => {
     let filteredData: Person[] = peopleData as Person[];
@@ -26,11 +21,14 @@ export const Home = () => {
     handleLoadData(value)
   })
 
-  console.log("data", data)
-
   return (
     <div>
       <Header onButtonClick={() => handleLoadData()} onFilterChange={filterData} />
+      <CardsList.List>
+        {data.map((card, index) => (
+          <CardsList.Card key={index} {...card} />
+        ))}
+      </CardsList.List>
     </div>
   )
 }
