@@ -1,0 +1,20 @@
+[
+  {
+    "city": "city 1",
+    "country": "country 1",
+    "favorite_sport": "sport 1",
+    "name": "name 1"
+  },
+  {
+    "city": "city 2",
+    "country": "country 2",
+    "favorite_sport": "sport 2",
+    "name": "name 2"
+  },
+  {
+    "city": "city 3",
+    "country": "country 3",
+    "favorite_sport": "sport 3",
+    "name": "name 3"
+  }
+]
