@@ -15,8 +15,7 @@
   background-color: colors.$black;
   color: colors.$white;
 
-  &:hover:not(:disabled),
-  &:focus-within:not(:disabled) {
+  &:hover:not(:disabled) {
     filter: brightness(80%);
   }
 

@@ -1,0 +1,45 @@
+@use "../../../../styles/variables/colors.scss";
+@use "../../../../styles/variables/breakpoints.scss";
+
+.container {
+  border-radius: 0.5rem;
+  border: 1px solid colors.$light-gray;
+  padding: 1rem;
+  width: 100%;
+  overflow-wrap: break-word;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  >p {
+    font-weight: 500;
+    font-size: 1rem;
+    color: colors.$dark-gray;
+
+    strong {
+      font-weight: 600;
+      color: colors.$black;
+    }
+  }
+
+  footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex: 1;
+
+    >p {
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: colors.$gray;
+      text-align: right;
+    }
+  }
+}
+
+.name {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: colors.$black;
+}
