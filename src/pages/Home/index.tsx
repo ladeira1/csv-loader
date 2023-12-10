@@ -1,9 +1,10 @@
 import { useState } from "react"
 import peopleData from "../../data/people.csv"
-import { useDebounce } from "../../utils/useDebounce";
+import { useDebounce } from "../../hooks/useDebounce";
 import { Header } from "../../components/Header";
 import { CardsList } from "../../components/CardsList";
 import { Person } from "../../components/CardsList/components/Card/Card.interface";
+import styles from "./Home.module.scss"
 
 export const Home = () => {
   const [data, setData] = useState<Person[]>([])
@@ -22,13 +23,15 @@ export const Home = () => {
   })
 
   return (
-    <div>
+    <div className={styles.container}>
       <Header onButtonClick={() => handleLoadData()} onFilterChange={filterData} />
-      <CardsList.List>
-        {data.map((card, index) => (
-          <CardsList.Card key={index} {...card} />
-        ))}
-      </CardsList.List>
+      <article>
+        <CardsList.List>
+          {data.map((card, index) => (
+            <CardsList.Card key={index} {...card} />
+          ))}
+        </CardsList.List>
+      </article>
     </div>
   )
 }
