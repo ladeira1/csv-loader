@@ -34,7 +34,7 @@ export const Home = () => {
     <div className={styles.container}>
       <Header onButtonClick={() => handleLoadData()} onFilterChange={filterData} />
       <article>
-        <CardsList className="scroll-container" items={data} />
+        {data?.length > 0 && <CardsList items={data} />}
       </article>
     </div>
   )
