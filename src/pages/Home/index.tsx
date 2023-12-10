@@ -17,6 +17,7 @@ export const Home = () => {
         filteredData = filteredData.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()))
       }
       
+      window?.scrollTo?.({ top: 0 })
       setData(filteredData)
     } catch (err) {
       toast("Something went wrong while loading the CSV file", {

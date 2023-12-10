@@ -9,7 +9,7 @@ const makeSut = (props: InputProps) => {
 
 describe("Input test suite", () => {
   it("should render the input correctly", () => {
-    const screen = makeSut({ placeholder: "test placeholder", value: "test value" })
+    const screen = makeSut({ placeholder: "test placeholder", value: "test value", onChange: jest.fn() })
     const input = screen.getByTestId("input")
     expect(input).toBeInTheDocument()
     expect(input).toHaveAttribute("placeholder", "test placeholder")

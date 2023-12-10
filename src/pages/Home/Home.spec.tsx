@@ -7,6 +7,8 @@ const makeSut = () => {
 }
 
 describe("Home test suite", () => {
+  window.scrollTo = jest.fn();
+  
   beforeAll(() => {
     jest.useFakeTimers();
   });
