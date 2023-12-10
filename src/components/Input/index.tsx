@@ -14,7 +14,7 @@ export const Input = ({ placeholder, ...rest }: InputProps) => {
       onBlur={() => setIsSelected(false)}
       className={handleClassNames([styles.container, isSelected && styles.containerSelected])}
     >
-      <input id={id} placeholder={placeholder} {...rest} className={styles.container} />
+      <input data-testid="input" id={id} placeholder={placeholder} {...rest} className={styles.container} />
       <p>{placeholder}</p>
     </label>
   )
