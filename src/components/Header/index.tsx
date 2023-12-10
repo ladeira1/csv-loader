@@ -1,5 +1,8 @@
 import { useState } from "react"
 import { HeaderProps } from "./Header.interface"
+import { Button } from "../Button"
+import { Input } from "../Input"
+import styles from "./Header.module.scss"
 
 export const Header = ({ onFilterChange, onButtonClick }: HeaderProps) => {
   const [filter, setFilter] = useState("")
@@ -19,9 +22,9 @@ export const Header = ({ onFilterChange, onButtonClick }: HeaderProps) => {
   const buttonText = hasLoaded ? "Reset" : "Load CSV"
 
   return (
-    <header>
-      <input placeholder="Search for specific data" value={filter} onChange={e => handleChange(e.target.value)} />
-      <button onClick={handleClick}>{buttonText}</button>
+    <header className={styles.container}>
+      <Input placeholder="Search for specific data" value={filter} onChange={e => handleChange(e.target.value)} />
+      <Button onClick={handleClick}>{buttonText}</Button>
     </header>
   )
 }
