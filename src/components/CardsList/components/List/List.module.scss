@@ -1,0 +1,15 @@
+@use "../../../../styles/variables/colors.scss";
+@use "../../../../styles/variables/breakpoints.scss";
+
+.container {
+  padding: 1rem 0.5rem;
+
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(17.5rem, 85vw), 1fr));
+  grid-auto-flow: row;
+
+  @media screen and (min-width: breakpoints.$small) {
+    padding: 1rem;
+  }
+}
