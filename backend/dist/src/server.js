@@ -14,6 +14,9 @@ exports.app = app;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use("/api/", routes_1.router);
+app.get('/hello', (req, res) => {
+    return res.send('Express Typescript on Vercel');
+});
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
         console.log('Server is running in PORT ' + PORT);
