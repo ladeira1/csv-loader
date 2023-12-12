@@ -10,7 +10,7 @@ app.use(cors())
 app.use(express.json())
 app.use("/api/", router)
 
-app.get('/hello', (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   return res.send('Express Typescript on Vercel')
 })
 
