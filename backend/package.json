@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env DATABASE_URL=file:./test.db npx prisma migrate reset --force && cross-env DATABASE_URL=file:./test.db jest --runInBand --watchAll",
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "reset-jest": "jest --clearCache --updateSnapshot",
+    "dev": "cross-env DATABASE_URL=file:./dev.db ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
     "migrate-dev": "npx prisma migrate dev",
-    "start": "node dist/src/server.js"
+    "start": "node dist/src/server.js",
+    "postinstall": "cross-env DATABASE_URL=file:./dev.db npx prisma migrate dev --name init"
   },
   "keywords": [],
   "author": "",
