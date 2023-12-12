@@ -1,5 +1,5 @@
 export const defaultView = {
   error: (err: any) => ({
-    error: err?.message ?? "Unidentified error"
+    message: err?.message ?? "Unidentified error"
   })
 }
