@@ -10,8 +10,10 @@ app.use(cors())
 app.use(express.json())
 app.use("/api/", router)
 
-app.listen(PORT, () => {
-  console.log('Server is running in PORT ' + PORT)
-})
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log('Server is running in PORT ' + PORT)
+  })
+}
 
 export { app }
