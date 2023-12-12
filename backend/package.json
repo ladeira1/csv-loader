@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env DATABASE_URL=file:./test.db npx prisma migrate reset --force && cross-env DATABASE_URL=file:./test.db jest --watchAll",
+    "test": "cross-env DATABASE_URL=file:./test.db npx prisma migrate reset --force && cross-env DATABASE_URL=file:./test.db jest --runInBand --watchAll",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts"
   },
   "keywords": [],
