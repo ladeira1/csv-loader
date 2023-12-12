@@ -31,7 +31,7 @@ export const DataLoader = ({ className, onSuccess }: DataLoaderProps) => {
   return (
     <div className={handleClassNames([className, styles.center])}>
       <Button  onClick={() => inputRef?.current?.click()}>
-        <input ref={inputRef} id="load-input" type={"file"} accept={".csv"} onChange={handleOnChange} />
+        <input ref={inputRef} data-testid="load-input" type={"file"} accept={".csv"} onChange={handleOnChange} />
         Load CSV
       </Button>
     </div>

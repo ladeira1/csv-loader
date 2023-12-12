@@ -25,7 +25,7 @@ describe("Header test suite", () => {
     const filterFunc = jest.fn()
     const screen = makeSut({ onButtonClick: buttonFunc, onFilterChange: filterFunc })
 
-    expect(screen.getByText("Load CSV")).toBeInTheDocument()
+    expect(screen.getByText("Reset")).toBeInTheDocument()
   })
 
   it("should trigger input events", () => {
@@ -45,10 +45,8 @@ describe("Header test suite", () => {
     const screen = makeSut({ onButtonClick: buttonFunc, onFilterChange: filterFunc })
     const button = screen.getByRole("button")
 
-    expect(screen.getByText("Load CSV")).toBeInTheDocument()
+    expect(screen.getByText("Reset")).toBeInTheDocument()
     fireEvent.click(button)
     expect(buttonFunc).toHaveBeenCalledTimes(1)
-    jest.advanceTimersByTime(500)
-    expect(screen.getByText("Reset")).toBeInTheDocument()
   })
 })
