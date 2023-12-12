@@ -7,6 +7,7 @@
     "test": "cross-env DATABASE_URL=file:./test.db npx prisma migrate reset --force && cross-env DATABASE_URL=file:./test.db jest --runInBand --watchAll",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
+    "migrate-dev": "npx prisma migrate dev",
     "start": "node dist/src/server.js"
   },
   "keywords": [],
