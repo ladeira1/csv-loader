@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { filesController } from "../controllers/filersController";
+import { filesController } from "../controllers/filesController";
 import { fileMiddleware } from "../middlewares/fileMiddleware";
 
 const router = Router()
