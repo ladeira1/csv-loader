@@ -6,7 +6,6 @@ import styles from "./Header.module.scss"
 
 export const Header = ({ onFilterChange, onButtonClick }: HeaderProps) => {
   const [filter, setFilter] = useState("")
-  const [hasLoaded, setHasLoaded] = useState(false)
 
   const handleChange = (value: string) => {
     setFilter(value)
@@ -14,21 +13,15 @@ export const Header = ({ onFilterChange, onButtonClick }: HeaderProps) => {
   }
 
   const handleClick = () => {
-    if(hasLoaded) {
-      handleChange("")
-      return
-    }
-
+    handleChange("")
     onButtonClick()
-    setHasLoaded(true)
+    return
   }
-
-  const buttonText = hasLoaded ? "Reset" : "Load CSV"
 
   return (
     <header className={styles.container}>
       <Input placeholder="Search for specific data" value={filter} onChange={e => handleChange(e.target.value)} />
-      <Button onClick={handleClick}>{buttonText}</Button>
+      <Button onClick={handleClick}>Reset</Button>
     </header>
   )
 }

@@ -7,6 +7,10 @@ const filesController = {
   create: async (req: Request, res: Response) => {
     try {
       const peopleData = req.file?.buffer
+      if(req.file?.mimetype !== "text/csv") {
+        throw new Error("Invalid CSV file")
+      }
+      
       const peopleFromCsv = parseCsv(peopleData)
       if(!peopleFromCsv || peopleFromCsv.length === 0) {
         throw new Error("Empty CSV")

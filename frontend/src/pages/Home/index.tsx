@@ -1,26 +1,23 @@
 import { useState } from "react"
-import peopleData from "../../data/people.csv"
 import { useDebounce } from "../../hooks/useDebounce";
 import { Header } from "../../components/Header";
 import { CardsList } from "../../components/CardsList";
 import { Person } from "../../components/CardsList/components/Card/Card.interface";
 import styles from "./Home.module.scss"
 import { toast } from "react-toastify";
+import { DataLoader } from "../../components/DataLoader";
+import { api } from "../../services/api";
 
 export const Home = () => {
   const [data, setData] = useState<Person[]>([])
-  
-  const handleLoadData = async (filter?: string) => {
+
+  const fetchData = async (query: string = "") => {
     try {
-      let filteredData: Person[] = peopleData as Person[];
-      if(!!filter) {
-        filteredData = filteredData.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()))
-      }
-      
+      const response = await api.get(`/users?q=${query}`)
       window?.scrollTo?.({ top: 0 })
-      setData(filteredData)
+      setData(response.data.data)
     } catch (err) {
-      toast("Something went wrong while loading the CSV file", {
+      toast((err as any)?.response?.data?.message ?? "Something went wrong while loading the data", {
         type: "error",
         position: "bottom-right"
       })
@@ -28,12 +25,16 @@ export const Home = () => {
   }
 
   const filterData = useDebounce((value: string) => {
-    handleLoadData(value)
+    fetchData(value)
   })
+
+  if(!data || data.length === 0) {
+    return <DataLoader className={styles.container} onSuccess={fetchData} />
+  }
 
   return (
     <div className={styles.container}>
-      <Header onButtonClick={() => handleLoadData()} onFilterChange={filterData} />
+      <Header onButtonClick={() => fetchData()} onFilterChange={filterData} />
       <article>
         {data?.length > 0 && <CardsList items={data} />}
       </article>
